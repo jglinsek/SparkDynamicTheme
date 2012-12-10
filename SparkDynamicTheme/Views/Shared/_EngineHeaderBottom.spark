@@ -1,0 +1,3 @@
+﻿#//allow views to include content in the head if needed.
+<use content="head"/>
+

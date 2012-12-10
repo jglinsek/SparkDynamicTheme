@@ -1,0 +1,5 @@
+﻿<IncludeJQuery />
+<IncludeJavascript />
+
+<use content="viewJavascript"/>
+<use content="widgetJavascript"/>
