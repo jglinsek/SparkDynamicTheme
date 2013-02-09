@@ -1,1 +1,3 @@
-﻿home home home
+﻿<a href="/">Home</a>
+<a href="/Home/Index/100">Customer 100</a>
+<a href="/Home/Index/200">Customer 200</a>

@@ -1,12 +1,10 @@
 ﻿using System.Web.Mvc;
-using SparkDynamicTheme.Services.Themes;
 
 namespace SparkDynamicTheme.Controllers
 {
-	[Themable]
 	public class HomeController : Controller
 	{
-		public ActionResult Index()
+		public ActionResult Index(string id)
 		{
 			return View();
 		}
