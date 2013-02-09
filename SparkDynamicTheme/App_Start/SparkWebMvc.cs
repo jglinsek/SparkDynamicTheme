@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Reflection;
-using System.Web;
+using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 using Spark;
 using Spark.FileSystem;
 using Spark.Web.Mvc;
 using Spark.Web.Mvc.Descriptors;
+using SparkDynamicTheme.Controllers;
 using SparkDynamicTheme.Infrastructure.Spark;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(SparkDynamicTheme.App_Start.SparkWebMvc), "Start")]
@@ -16,6 +17,8 @@ namespace SparkDynamicTheme.App_Start
 {
 	public static class SparkWebMvc
 	{
+		private static readonly string ThemeDirectory = AppDomain.CurrentDomain.GetData("DataDirectory").ToString();
+
 		public static void Start()
 		{			
 			ViewEngines.Engines.Clear();
@@ -23,8 +26,7 @@ namespace SparkDynamicTheme.App_Start
 			var settings = new SparkSettings()
 				.AddViewFolder(ViewFolderType.FileSystem, new Dictionary<string, string>
 					                                          {
-								 								  //{"basePath", "D:\\code\\SparkDynamicTheme\\SparkDynamicTheme\\CustomerThemes\\"}
-						                                          {"basePath", AppDomain.CurrentDomain.GetData("DataDirectory").ToString()}
+						                                          {"basePath", ThemeDirectory}
 					                                          })
 				.SetAutomaticEncoding(true);
 
@@ -41,6 +43,9 @@ namespace SparkDynamicTheme.App_Start
 			sparkServiceContainer.AddFilter(CustomThemeFilter.For(GetCustomerId));
 
 			ViewEngines.Engines.Add(sparkServiceContainer.GetService<IViewEngine>());
+
+			var sparkEngine = sparkServiceContainer.GetService<ISparkViewEngine>();
+			sparkEngine.BatchCompilation(AllKnownDescriptors(viewFactory));
 		}
 
 		private static object GetCustomerId(ControllerContext controller)
@@ -53,6 +58,52 @@ namespace SparkDynamicTheme.App_Start
 			}
 
 			return customerId;
+		}
+
+		private static IList<SparkViewDescriptor> AllKnownDescriptors(SparkViewFactory viewFactory)
+		{
+			//build the batch
+			var batch = new SparkBatchDescriptor(); 
+			batch
+				.For<HomeController>().Layout("Application");
+
+
+			//find all the custom themes
+			var themeMasters = new List<string>();
+
+			var themePath = ThemeDirectory + "\\";
+			var themedMasterFiles = Directory.GetFiles(themePath, "index.html", SearchOption.AllDirectories);
+			foreach (var master in themedMasterFiles)
+			{
+				var themeMasterName = master.Remove(0, themePath.Length);
+				themeMasters.Add(themeMasterName);
+			}
+
+			//adjust the batch to precompile for each custom theme
+			var generatedDescriptors = viewFactory.CreateDescriptors(batch);
+			var allDescriptors = new List<SparkViewDescriptor>();
+
+			foreach (var descriptor in generatedDescriptors)
+			{
+				allDescriptors.Add(descriptor);
+
+				var isAppMaster = descriptor.Templates.Any(x => x.Contains("Application"));
+				if (!isAppMaster) continue;
+
+				foreach (var themeMaster in themeMasters)
+				{
+					var themeDescriptor = new SparkViewDescriptor()
+						.SetLanguage(descriptor.Language)
+						.SetTargetNamespace(descriptor.TargetNamespace)
+						.AddTemplate(descriptor.Templates[0]);
+
+					themeDescriptor.AddTemplate(themeMaster);
+
+					allDescriptors.Add(themeDescriptor);
+				}
+			}
+
+			return allDescriptors;
 		}
 
 	}
