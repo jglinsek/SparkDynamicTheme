@@ -159,6 +159,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Spark\CustomThemeFilter.cs" />
+    <Compile Include="Models\DataModels.cs" />
     <Compile Include="Models\DisplayForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -168,6 +169,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="App_Data\100\index.html" />
     <Content Include="App_Data\200\index.html" />
+    <Content Include="css\site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -206,6 +208,7 @@
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Shared\_SharedViewData.spark" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

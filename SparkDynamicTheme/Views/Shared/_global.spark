@@ -4,6 +4,7 @@
 <use namespace="System.Web.Mvc"/>
 <use namespace="System.Web.Mvc.Html"/>
 <use namespace="SparkDynamicTheme.Extensions"/>
+<use namespace="SparkDynamicTheme.Models"/>
 
 <use assembly="Spark.Web.Mvc"/>
 <use assembly="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
