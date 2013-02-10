@@ -45,7 +45,13 @@ namespace SparkDynamicTheme.App_Start
 			ViewEngines.Engines.Add(sparkServiceContainer.GetService<IViewEngine>());
 
 			var sparkEngine = sparkServiceContainer.GetService<ISparkViewEngine>();
+			
+			var timer = new Stopwatch();
+			timer.Start();
 			sparkEngine.BatchCompilation(AllKnownDescriptors(viewFactory));
+			timer.Stop();
+
+			"SparkWebMvc".Log().Info("Pre-compile time: {0} seconds", timer.Elapsed.TotalSeconds);
 		}
 
 		private static object GetCustomerId(ControllerContext controller)
