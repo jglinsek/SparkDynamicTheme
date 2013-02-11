@@ -3,3 +3,5 @@
 
 <use content="viewJavascript"/>
 <use content="widgetJavascript"/>
+
+<IncludeHeaderScripts />

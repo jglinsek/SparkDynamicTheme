@@ -1,6 +1,4 @@
-﻿@import url(http://fonts.googleapis.com/css?family=Snowburst+One);
-
-body {
-	background-color: aliceblue;
-	font-family: 'Snowburst One', cursive;
+﻿body {
+	width: 80%;
+	margin: 0 auto;
 }

@@ -69,10 +69,19 @@ namespace SparkDynamicTheme.App_Start
 		private static IList<SparkViewDescriptor> AllKnownDescriptors(SparkViewFactory viewFactory)
 		{
 			//build the batch
-			var batch = new SparkBatchDescriptor(); 
-			batch
-				.For<HomeController>().Layout("Application");
-
+			var batch = new SparkBatchDescriptor();
+			batch 
+				.For<HomeController>().Layout("Application")
+				.For<FirstController>().Layout("Application")
+				.For<SecondController>().Layout("Application")
+				.For<ThirdController>().Layout("Application")
+				.For<FourthController>().Layout("Application")
+				.For<FifthController>().Layout("Application")
+				.For<SixthController>().Layout("Application")
+				.For<SeventhController>().Layout("Application")
+				.For<EigthController>().Layout("Application")
+				.For<NinthController>().Layout("Application")
+				.For<TenthController>().Layout("Application");
 
 			//find all the custom themes
 			var themeMasters = new List<string>();
@@ -88,7 +97,7 @@ namespace SparkDynamicTheme.App_Start
 			//adjust the batch to precompile for each custom theme
 			var generatedDescriptors = viewFactory.CreateDescriptors(batch);
 			var allDescriptors = new List<SparkViewDescriptor>();
-
+			 
 			foreach (var descriptor in generatedDescriptors)
 			{
 				allDescriptors.Add(descriptor);
@@ -104,7 +113,7 @@ namespace SparkDynamicTheme.App_Start
 						.AddTemplate(descriptor.Templates[0]);
 
 					themeDescriptor.AddTemplate(themeMaster);
-
+					 
 					allDescriptors.Add(themeDescriptor);
 				}
 			}

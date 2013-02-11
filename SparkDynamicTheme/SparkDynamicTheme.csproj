@@ -159,7 +159,17 @@
     <Compile Include="App_Start\SparkWebMvc.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Controllers\EigthController.cs" />
+    <Compile Include="Controllers\FifthController.cs" />
+    <Compile Include="Controllers\FirstController.cs" />
+    <Compile Include="Controllers\FourthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NinthController.cs" />
+    <Compile Include="Controllers\SecondController.cs" />
+    <Compile Include="Controllers\SeventhController.cs" />
+    <Compile Include="Controllers\SixthController.cs" />
+    <Compile Include="Controllers\TenthController.cs" />
+    <Compile Include="Controllers\ThirdController.cs" />
     <Compile Include="Extensions\SparkViewExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Infrastructure\DependencyResolution\IoC.cs" />
@@ -180,6 +190,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="App_Data\100\index.html" />
     <Content Include="App_Data\200\index.html" />
+    <Content Include="App_Data\300\index.html" />
+    <Content Include="App_Data\400\index.html" />
+    <Content Include="App_Data\500\index.html" />
+    <Content Include="App_Data\600\index.html" />
+    <Content Include="App_Data\700\index.html" />
+    <Content Include="App_Data\800\index.html" />
+    <Content Include="App_Data\900\index.html" />
+    <Content Include="css\default-theme.css" />
     <Content Include="css\site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -220,6 +238,22 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Shared\_SharedViewData.spark" />
+    <Content Include="Views\Shared\_IncludeHeaderScripts.spark" />
+    <Content Include="Views\Shared\_IncludeHeaderScripts2.spark" />
+    <Content Include="Views\Shared\_Widget1.spark" />
+    <Content Include="Views\Shared\_Widget1Child1.spark" />
+    <Content Include="Views\Shared\_Widget1Child2.spark" />
+    <Content Include="Views\Shared\_Widget1Child2Child1.spark" />
+    <Content Include="Views\First\index.spark" />
+    <Content Include="Views\Second\index.spark" />
+    <Content Include="Views\Third\index.spark" />
+    <Content Include="Views\Fourth\index.spark" />
+    <Content Include="Views\Fifth\index.spark" />
+    <Content Include="Views\Sixth\index.spark" />
+    <Content Include="Views\Seventh\index.spark" />
+    <Content Include="Views\Eigth\index.spark" />
+    <Content Include="Views\Ninth\index.spark" />
+    <Content Include="Views\Tenth\index.spark" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,4 @@
+﻿<div>
+	Child Widget 2
+	<Widget1Child2Child1 />
+</div>
