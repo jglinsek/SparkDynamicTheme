@@ -94,7 +94,7 @@ namespace SparkDynamicTheme.App_Start
 			{
 				var themeMasterName = master.Remove(0, themePath.Length);
 				themeMasters.Add(themeMasterName);
-			}
+			} 
 
 			//adjust the batch to precompile for each custom theme
 			var generatedDescriptors = viewFactory.CreateDescriptors(batch);
@@ -117,7 +117,7 @@ namespace SparkDynamicTheme.App_Start
 					themeDescriptor.AddTemplate(themeMaster);
 					 
 					allDescriptors.Add(themeDescriptor);
-				}
+				} 
 			}
 
 			return allDescriptors;
