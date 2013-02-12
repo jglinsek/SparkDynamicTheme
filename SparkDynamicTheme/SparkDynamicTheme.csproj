@@ -200,6 +200,7 @@
     <Content Include="css\default-theme.css" />
     <Content Include="css\site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Views\bindings.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -241,9 +242,13 @@
     <Content Include="Views\Shared\_IncludeHeaderScripts.spark" />
     <Content Include="Views\Shared\_IncludeHeaderScripts2.spark" />
     <Content Include="Views\Shared\_Widget1.spark" />
-    <Content Include="Views\Shared\_Widget1Child1.spark" />
+    <Content Include="Views\Shared\_Widget1Child1.spark">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Shared\_Widget1Child2.spark" />
-    <Content Include="Views\Shared\_Widget1Child2Child1.spark" />
+    <Content Include="Views\Shared\_Widget1Child2Child1.spark">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\First\index.spark" />
     <Content Include="Views\Second\index.spark" />
     <Content Include="Views\Third\index.spark" />
@@ -254,6 +259,14 @@
     <Content Include="Views\Eigth\index.spark" />
     <Content Include="Views\Ninth\index.spark" />
     <Content Include="Views\Tenth\index.spark" />
+    <Content Include="Views\Shared\_Widget2.spark" />
+    <Content Include="Views\Shared\_Widget2Child1.spark">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Shared\_Widget2Child2.spark" />
+    <Content Include="Views\Shared\_Widget2Child2Child1.spark">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

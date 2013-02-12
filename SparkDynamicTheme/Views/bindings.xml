@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<bindings>
+	<element name="a">this.Anchor('child::*', '@action', '@controller', new RouteValueDictionary{{'@route-*'}}, new Dictionary[[string,object]]{{"@*"}})</element>
+	<element name="a">this.Anchor('child::*', '@action', '@controller', new RouteValueDictionary{{'@route-*'}})</element>
+	<element name="a">this.Anchor('child::*', '@action', '@controller', new Dictionary[[string,object]]{{"@*"}})</element>
+	<element name="a">this.Anchor('child::*', '@action', '@controller')</element>
+</bindings>

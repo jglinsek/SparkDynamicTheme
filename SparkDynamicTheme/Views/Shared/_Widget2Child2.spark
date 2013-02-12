@@ -132,7 +132,7 @@
 
 	</div>
 
-	<Widget1Child2Child1 />
+	<Widget2Child2Child1 />
 </div>
 <content name="widgetJavascript">
 	<script>

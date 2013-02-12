@@ -18,31 +18,31 @@
 
 		<div class="here?{stepCount <= currentStep}" style="width: ${liWidth}">
 			<div>
-				${GenerateContent(stepCount, currentStep, showExtras)}
+				${GenerateContent2(stepCount, currentStep, showExtras)}
 				<set stepCount="stepCount+1" />
 			</div>
 		</div>
 
 		<div class="here?{stepCount <= currentStep}" style="width: ${liWidth}">
-			${GenerateTriangle(stepCount, currentStep)}
+			${GenerateTriangle2(stepCount, currentStep)}
 			<div>
-				${GenerateContent(stepCount, currentStep, showExtras)}
+				${GenerateContent2(stepCount, currentStep, showExtras)}
 				<set stepCount="stepCount+1" />
 			</div>
 		</div>
 		#//System.Diagnostics.Debugger.Break();
 		<div if="showExtras" class="here?{stepCount <= currentStep}" style="width: ${liWidth}">
-			${GenerateTriangle(stepCount, currentStep)}
+			${GenerateTriangle2(stepCount, currentStep)}
 			<div>
-				${GenerateContent(stepCount, currentStep, showExtras)}
+				${GenerateContent2(stepCount, currentStep, showExtras)}
 				<set stepCount="stepCount+1" />
 			</div>
 		</div>
 
 		<div class="here?{stepCount <= currentStep}" style="width: ${liLastWidth}">
-			${GenerateTriangle(stepCount, currentStep)}
+			${GenerateTriangle2(stepCount, currentStep)}
 			<div>
-				${GenerateContent(stepCount, currentStep, showExtras)}
+				${GenerateContent2(stepCount, currentStep, showExtras)}
 				<set stepCount="stepCount+1" />
 			</div>
 		</div>
@@ -50,13 +50,13 @@
 	</div>
 </div>
 
-<macro name="GenerateTriangle" thisStep="int" currentStep="int" >
+<macro name="GenerateTriangle2" thisStep="int" currentStep="int" >
 	<span if="thisStep == currentStep + 1">
 		<span class="triangle"></span>
 	</span>
 </macro>
 
-<macro name="GenerateContent" stepCounter="int" currentStep="int" showExtras="bool" >
+<macro name="GenerateContent2" stepCounter="int" currentStep="int" showExtras="bool" >
 	<var isDone="currentStep > stepCounter" />
 	<span class="done?{isDone}">
 		<if condition="isDone">
@@ -68,15 +68,15 @@
 	</span>
 	<if condition="isDone">
 		#// generate link for done step
-		${GenerateStepLink(stepCounter, showExtras)}
+		${GenerateStepLink2(stepCounter, showExtras)}
 	</if>
 	<else>
 		#//generate span for not done step
-		${GenerateStepSpan(stepCounter, showExtras)}
+		${GenerateStepSpan2(stepCounter, showExtras)}
 	</else>
 </macro>
 
-<macro name="GetStepName" step="int" showExtras="bool" >
+<macro name="GetStepName2" step="int" showExtras="bool" >
 	<if condition="step == 3 && !showExtras">
 		${"'Some Step'"}
 	</if>
@@ -85,29 +85,29 @@
 	</else>
 </macro>
 
-<macro name="GenerateStepLink" step="int" showExtras="bool" >
+<macro name="GenerateStepLink2" step="int" showExtras="bool" >
 	<if condition="step == 1">
 		<a class="step" action="Index" controller="First" route-CartId="${'id'}" >
-			${GetStepName(step, showExtras)}
+			${GetStepName2(step, showExtras)}
 		</a>
 	</if>
 	<elseif condition="step == 2">
 		<a class="step" action="Index" controller="Second" route-CartId="${'id'}" >
-			${GetStepName(step, showExtras)}
+			${GetStepName2(step, showExtras)}
 		</a>
 	</elseif>
 	<elseif condition="step == 3 && showExtras">
 		<a class="step" action="Index" controller="Third" route-CartId="${'id'}" >
-			${GetStepName(step, showExtras)}
+			${GetStepName2(step, showExtras)}
 		</a>
 	</elseif>
 	<else>
 		<a class="step" action="Index" controller="First" route-CartId="${'id'}" >
-			${GetStepName(step, showExtras)}
+			${GetStepName2(step, showExtras)}
 		</a>
 	</else>
 </macro>
 
-<macro name="GenerateStepSpan" step="int" showExtras="bool" >
-	<span class="step">${GetStepName(step, showExtras)}</span>
+<macro name="GenerateStepSpan2" step="int" showExtras="bool" >
+	<span class="step">${GetStepName2(step, showExtras)}</span>
 </macro>
